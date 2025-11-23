@@ -10,9 +10,7 @@ const app = express();
 const allowOrigin = process.env.ALLOW_ORIGIN || 'http://localhost:5173';
 
 app.use(cors({
-  origin: [
-    '*'
-  ], // Sử dụng biến môi trường hoặc fallback về localhost:5173
+  origin: '*', // Sử dụng biến môi trường hoặc fallback về localhost:5173
   credentials: true,
   methods: ["GET", "POST", "PUT", "DELETE", "PATCH"],
 }));
