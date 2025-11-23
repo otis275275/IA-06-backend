@@ -34,6 +34,11 @@ connectDB();
 // 4. Định nghĩa Routes (Phải đặt SAU CORS và express.json)
 routes(app);
 
-app.listen(process.env.PORT || 5000, () => {
-  console.log(`Server running on port ${process.env.PORT}`);
-});
+
+if (process.env.NODE_ENV !== 'production') {
+    app.listen(process.env.PORT, () => {
+        console.log(`App listening on port ${process.env.PORT }`);
+    });
+}
+
+export default app;
