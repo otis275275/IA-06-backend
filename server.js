@@ -11,8 +11,7 @@ const allowOrigin = process.env.ALLOW_ORIGIN || 'http://localhost:5173';
 
 app.use(cors({
   origin: [
-    'http://localhost:5173',
-    'http://localhost:5173/'
+    'ia-06-frontend.vercel.app'
   ], // Sử dụng biến môi trường hoặc fallback về localhost:5173
   credentials: true,
   methods: ["GET", "POST", "PUT", "DELETE", "PATCH"],
