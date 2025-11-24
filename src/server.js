@@ -1,7 +1,7 @@
 import "dotenv/config";
 import express from "express";
-import connectDB from "./src/config/db.js";
-import routes from "./src/routes/index.js"; // Giả định đây là file định nghĩa routes
+import connectDB from "./config/db.js";
+import routes from "./routes/index.js"; // Giả định đây là file định nghĩa routes
 import cors from "cors";
 
 const app = express();
@@ -25,11 +25,20 @@ app.use(cors(corsOptions));
 
 app.options(/.*/, cors(corsOptions));
 
-// 2. Middleware xử lý body (cũng nên đặt trước routes)
-app.use(express.json());
+const PORT = process.env.PORT || 5000;
 
 // 3. Kết nối DB
 connectDB();
+
+// 2. Middleware xử lý body (cũng nên đặt trước routes)
+app.use(express.json());
+app.use(
+    express.urlencoded({
+        extended: true,
+    })
+);
+
+
 
 // 4. Định nghĩa Routes (Phải đặt SAU CORS và express.json)
 routes(app);
